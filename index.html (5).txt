@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <title>TEVORA | Make Better Breaks</title>
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+
+    :root {
+      --brown: #4b2416;
+      --dark-brown: #2b130c;
+      --cream: #fff7e8;
+      --gold: #f4a623;
+      --orange: #e87520;
+      --white: #ffffff;
+    }
+
+
+    body {
+      min-height: 100vh;
+      color: var(--dark-brown);
+      background:
+        radial-gradient(circle at 10% 20%, rgba(244,166,35,0.25), transparent 25%),
+        radial-gradient(circle at 90% 80%, rgba(232,117,32,0.18), transparent 30%),
+        var(--cream);
+      overflow-x: hidden;
+    }
+
+
+    /* NAVBAR */
+
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 78px;
+
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+
+      padding: 0 7%;
+      z-index: 10;
+    }
+
+
+    .logo {
+      font-size: 27px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      color: var(--brown);
+    }
+
+
+    .logo span {
+      color: var(--orange);
+    }
+
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+
+    .nav-links a {
+      color: var(--brown);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+
+    /* HERO */
+
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+
+
+      padding: 110px 7% 70px;
+
+
+      overflow: hidden;
+    }
+
+
+    .hero-content {
+      width: 55%;
+      z-index: 2;
+      animation: fadeUp 1s ease;
+    }
+
+
+    .badge {
+      display: inline-block;
+      padding: 9px 17px;
+
+
+      background: rgba(244,166,35,0.16);
+      border: 1px solid rgba(244,166,35,0.35);
+
+
+      border-radius: 50px;
+
+
+      color: var(--brown);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+
+
+      margin-bottom: 22px;
+    }
+
+
+    .hero h1 {
+      font-size: clamp(55px, 9vw, 105px);
+      line-height: 0.9;
+
+
+      letter-spacing: -4px;
+      font-weight: 950;
+
+
+      color: var(--brown);
+
+
+      margin-bottom: 20px;
+    }
+
+
+    .hero h1 span {
+      color: var(--orange);
+    }
+
+
+    .tagline {
+      font-size: clamp(25px, 4vw, 42px);
+      font-weight: 900;
+      color: var(--dark-brown);
+
+
+      margin-bottom: 15px;
+    }
+
+
+    .description {
+      max-width: 580px;
+
+
+      font-size: 16px;
+      line-height: 1.7;
+
+
+      color: #76584b;
+
+
+      margin-bottom: 28px;
+    }
+
+
+    /* DELIVERY */
+
+
+    .delivery {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+
+      padding: 10px 17px;
+
+
+      background: white;
+
+
+      border-radius: 50px;
+
+
+      box-shadow: 0 8px 25px rgba(75,36,22,0.08);
+
+
+      font-size: 12px;
+      font-weight: 800;
+
+
+      margin-bottom: 30px;
+    }
+
+
+    .delivery-dot {
+      width: 9px;
+      height: 9px;
+
+
+      border-radius: 50%;
+
+
+      background: #22b573;
+      box-shadow: 0 0 12px rgba(34,181,115,0.6);
+    }
+
+
+    /* BUTTON */
+
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 13px;
+
+
+      padding: 17px 34px;
+
+
+      background: linear-gradient(
+        135deg,
+        var(--orange),
+        var(--gold)
+      );
+
+
+      color: white;
+
+
+      text-decoration: none;
+
+
+      border-radius: 50px;
+
+
+      font-size: 15px;
+      font-weight: 900;
+
+
+      box-shadow:
+        0 12px 30px rgba(232,117,32,0.28);
+
+
+      transition: all 0.3s ease;
+    }
+
+
+    .order-btn:hover {
+      transform: translateY(-5px) scale(1.03);
+
+
+      box-shadow:
+        0 18px 40px rgba(232,117,32,0.35);
+    }
+
+
+    .arrow {
+      font-size: 20px;
+    }
+
+
+    /* RIGHT SIDE VISUAL */
+
+
+    .visual {
+      position: absolute;
+
+
+      width: 45%;
+      height: 100%;
+
+
+      right: 0;
+      top: 0;
+
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+
+    .main-circle {
+      width: min(430px, 38vw);
+      height: min(430px, 38vw);
+
+
+      border-radius: 50%;
+
+
+      background:
+        radial-gradient(
+          circle at 35% 30%,
+          #ffd98a,
+          #f4a623 45%,
+          #e87520 100%
+        );
+
+
+      box-shadow:
+        0 35px 80px rgba(75,36,22,0.20);
+
+
+      position: relative;
+
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+
+      animation: float 4s ease-in-out infinite;
+    }
+
+
+    .coffee {
+      font-size: min(150px, 13vw);
+      filter: drop-shadow(0 20px 15px rgba(75,36,22,0.25));
+    }
+
+
+    .circle-text {
+      position: absolute;
+
+
+      bottom: 42px;
+
+
+      background: white;
+
+
+      padding: 11px 20px;
+
+
+      border-radius: 50px;
+
+
+      font-size: 12px;
+      font-weight: 900;
+
+
+      color: var(--brown);
+
+
+      box-shadow: 0 8px 20px rgba(75,36,22,0.12);
+    }
+
+
+    /* FLOATING CARDS */
+
+
+    .floating-card {
+      position: absolute;
+
+
+      background: white;
+
+
+      padding: 15px 18px;
+
+
+      border-radius: 16px;
+
+
+      box-shadow: 0 15px 35px rgba(75,36,22,0.12);
+
+
+      font-weight: 800;
+
+
+      color: var(--brown);
+
+
+      font-size: 13px;
+    }
+
+
+    .card-coffee {
+      top: 25%;
+      left: 2%;
+    }
+
+
+    .card-samosa {
+      bottom: 25%;
+      right: 5%;
+    }
+
+
+    .floating-card small {
+      display: block;
+
+
+      margin-top: 5px;
+
+
+      color: #9b7b6b;
+
+
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+
+    /* FEATURES */
+
+
+    .features {
+      position: relative;
+
+
+      max-width: 1000px;
+
+
+      margin: -25px auto 0;
+
+
+      padding: 0 25px 55px;
+
+
+      display: grid;
+
+
+      grid-template-columns:
+        repeat(3, 1fr);
+
+
+      gap: 18px;
+
+
+      z-index: 3;
+    }
+
+
+    .feature {
+      background: rgba(255,255,255,0.82);
+
+
+      border: 1px solid rgba(75,36,22,0.08);
+
+
+      border-radius: 20px;
+
+
+      padding: 23px;
+
+
+      text-align: center;
+
+
+      box-shadow:
+        0 12px 35px rgba(75,36,22,0.07);
+
+
+      transition: 0.3s;
+    }
+
+
+    .feature:hover {
+      transform: translateY(-7px);
+    }
+
+
+    .feature-icon {
+      font-size: 30px;
+
+
+      margin-bottom: 10px;
+    }
+
+
+    .feature h3 {
+      color: var(--brown);
+
+
+      font-size: 15px;
+
+
+      margin-bottom: 7px;
+    }
+
+
+    .feature p {
+      color: #8a6c5d;
+
+
+      font-size: 12px;
+
+
+      line-height: 1.5;
+    }
+
+
+    /* FOOTER */
+
+
+    footer {
+      text-align: center;
+
+
+      padding: 20px;
+
+
+      color: #92776a;
+
+
+      font-size: 11px;
+    }
+
+
+    /* DECORATIONS */
+
+
+    .shape {
+      position: absolute;
+
+
+      border-radius: 50%;
+
+
+      pointer-events: none;
+    }
+
+
+    .shape-one {
+      width: 120px;
+      height: 120px;
+
+
+      background: rgba(244,166,35,0.12);
+
+
+      top: 12%;
+      left: -45px;
+    }
+
+
+    .shape-two {
+      width: 80px;
+      height: 80px;
+
+
+      background: rgba(232,117,32,0.10);
+
+
+      bottom: 12%;
+      left: 42%;
+    }
+
+
+    /* ANIMATIONS */
+
+
+    @keyframes fadeUp {
+
+
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+
+    }
+
+
+    @keyframes float {
+
+
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+
+      50% {
+        transform: translateY(-12px);
+      }
+
+
+    }
+
+
+    /* MOBILE */
+
+
+    @media (max-width: 800px) {
+
+
+      nav {
+        padding: 0 20px;
+      }
+
+
+      .nav-links {
+        gap: 12px;
+      }
+
+
+      .nav-links a {
+        font-size: 10px;
+      }
+
+
+      .hero {
+        min-height: auto;
+
+
+        padding:
+          120px 20px 55px;
+
+
+        text-align: center;
+
+
+        display: block;
+      }
+
+
+      .hero-content {
+        width: 100%;
+      }
+
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+
+
+      .description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+
+      .visual {
+        position: relative;
+
+
+        width: 100%;
+        height: 350px;
+
+
+        margin-top: 20px;
+      }
+
+
+      .main-circle {
+        width: 280px;
+        height: 280px;
+      }
+
+
+      .coffee {
+        font-size: 100px;
+      }
+
+
+      .card-coffee {
+        left: 4%;
+        top: 15%;
+      }
+
+
+      .card-samosa {
+        right: 3%;
+        bottom: 15%;
+      }
+
+
+      .features {
+        grid-template-columns: 1fr;
+
+
+        max-width: 400px;
+
+
+        margin-top: 0;
+      }
+    }
+
+
+    @media (max-width: 420px) {
+
+
+      .logo {
+        font-size: 21px;
+      }
+
+
+      .nav-links {
+        gap: 8px;
+      }
+
+
+      .nav-links a {
+        font-size: 9px;
+      }
+
+
+      .hero h1 {
+        font-size: 58px;
+      }
+
+
+      .tagline {
+        font-size: 25px;
+      }
+
+
+      .order-btn {
+        width: 90%;
+      }
+
+
+      .visual {
+        height: 320px;
+      }
+
+
+      .main-circle {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+
+
+<body>
+
+
+  <!-- NAVIGATION -->
+
+
+  <nav>
+
+
+    <div class="logo">
+      TEV<span>O</span>RA
+    </div>
+
+
+    <div class="nav-links">
+      <a href="#home">HOME</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+
+
+  </nav>
+
+
+
+
+  <!-- HERO -->
+
+
+  <section class="hero" id="home">
+
+
+    <div class="hero-content">
+
+
+      <div class="badge">
+        ☕ CORPORATE BREAK DELIVERY
+      </div>
+
+
+      <h1>
+        TEVORA<span>.</span>
+      </h1>
+
+
+      <div class="tagline">
+        Make Better Breaks.
+      </div>
+
+
+      <p class="description">
+        Coffee, tea and tasty snacks delivered directly
+        to your workplace. Simple ordering, reasonable
+        prices and fast corporate delivery.
+      </p>
+
+
+      <div class="delivery">
+
+
+        <span class="delivery-dot"></span>
+
+
+        5-MINUTE DELIVERY
+
+
+      </div>
+
+
+      <br>
+
+
+      <!--
+        IMPORTANT:
+        Ee URL nee existing ordering website URL.
+      -->
+
+
+      <a
+        href="https://rammaheshbabu9-lab.github.io/Corporate-/"
+        target="_blank"
+        class="order-btn"
+      >
+
+
+        ORDER NOW
+
+
+        <span class="arrow">→</span>
+
+
+      </a>
+
+
+    </div>
+
+
+
+
+    <!-- RIGHT VISUAL -->
+
+
+    <div class="visual">
+
+
+      <div class="floating-card card-coffee">
+
+
+        ☕ Fresh Coffee
+
+
+        <small>
+          Starting ₹15
+        </small>
+
+
+      </div>
+
+
+
+
+      <div class="main-circle">
+
+
+        <div class="coffee">
+          ☕
+        </div>
+
+
+        <div class="circle-text">
+          BREAK TIME, BETTER
+        </div>
+
+
+      </div>
+
+
+
+
+      <div class="floating-card card-samosa">
+
+
+        🥟 Samosa
+
+
+        <small>
+          2 for ₹30
+        </small>
+
+
+      </div>
+
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- FEATURES -->
+
+
+  <section
+    class="features"
+    id="about"
+  >
+
+
+    <div class="feature">
+
+
+      <div class="feature-icon">
+        ☕
+      </div>
+
+
+      <h3>
+        Fresh Coffee
+      </h3>
+
+
+      <p>
+        Freshly prepared coffee
+        for your office break.
+      </p>
+
+
+    </div>
+
+
+
+
+    <div class="feature">
+
+
+      <div class="feature-icon">
+        🥟
+      </div>
+
+
+      <h3>
+        Tasty Snacks
+      </h3>
+
+
+      <p>
+        Affordable snacks made
+        for quick corporate breaks.
+      </p>
+
+
+    </div>
+
+
+
+
+    <div class="feature">
+
+
+      <div class="feature-icon">
+        ⚡
+      </div>
+
+
+      <h3>
+        Fast Delivery
+      </h3>
+
+
+      <p>
+        Designed for quick
+        office delivery.
+      </p>
+
+
+    </div>
+
+
+  </section>
+
+
+
+
+  <!-- FOOTER -->
+
+
+  <footer id="contact">
+
+
+    TEVORA · Make Better Breaks
+
+
+    <br><br>
+
+
+    Corporate Coffee & Snack Delivery
+
+
+  </footer>
+
+
+
+
+  <!-- DECORATIVE SHAPES -->
+
+
+  <div class="shape shape-one"></div>
+
+
+  <div class="shape shape-two"></div>
+
+
+</body>
+</html>
